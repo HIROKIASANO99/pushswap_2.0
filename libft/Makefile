@@ -1,6 +1,6 @@
-INCLUDE = .
-NAME = libft.a
-SRCS = \
+NAME        = libft.a
+INCLUDE     = .
+SRCS        = \
 	ft_bzero.c ft_memcpy.c ft_memmove.c \
 	ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c \
 	ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c \
@@ -9,34 +9,42 @@ SRCS = \
 	ft_strjoin.c ft_strtrim.c  ft_split.c ft_itoa.c ft_strmapi.c \
 	ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c \
 	ft_putendl_fd.c ft_memset.c
-BONUSSRCS = \
+
+BONUSSRCS   = \
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 	ft_lstdelone.c ft_lstclear.c ft_lstiter.c #ft_lstmap.c
 
-OBJS = $(SRCS:.c=.o)
-BNSOBJS = $(BONUSSRCS:.c=.o)
+# 出力先ディレクトリ
+OBJDIR      = obj
 
-CC = gcc
-CFLAG = -Wall -Wextra -Werror
+# .oファイルをobjディレクトリに生成する
+OBJS        = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
+BNSOBJS     = $(addprefix $(OBJDIR)/, $(BONUSSRCS:.c=.o))
 
+CC          = gcc
+CFLAGS      = -Wall -Wextra -Werror
 
-$(NAME) : $(OBJS)
-	ar rc $(NAME) $(OBJS)
+# ライブラリ作成
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
+# ボーナスターゲット
 bonus: $(OBJS) $(BNSOBJS)
-	ar rc $(NAME) $?
+	ar rcs $(NAME) $(OBJS) $(BNSOBJS)
 
-#all: $(NAME)
+all: $(NAME)
 
-.c.o:
-	$(CC) $(CFLAG) -I $(INCLUDE) -c $< -o $@
+# obj ディレクトリに .o を出力するためのパターンルール
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+
 clean:
-	rm -f $(OBJS) $(BNSOBJS)
+	rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -f $(NAME) $(BNSOBJS) a.out
+	rm -f $(NAME) a.out
 
+re: fclean bonus
 
-re:	fclean bonus
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

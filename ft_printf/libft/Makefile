@@ -5,42 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hiasano <hiasano@student.42tokyo.j>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/22 22:17:37 by hiasano           #+#    #+#              #
-#    Updated: 2024/05/26 02:45:40 by hiasano          ###   ########.fr        #
+#    Created: 2024/05/22 21:57:37 by hiasano           #+#    #+#              #
+#    Updated: 2024/05/26 02:44:12 by hiasano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-INCLUDE =	./include
-NAME	=	libftprintf.a
-SRCS	=	\
-	ft_printf.c	ft_print_str.c	ft_print_hex.c ft_print_pointer.c	ft_putnbr_unsign_fd.c
+# ./Libft/Makefile
+INCLUDE     = ../include
+NAME        = libft.a
 
+SRCS        = ft_atoi.c ft_itoa.c ft_putnbr_fd.c ft_putchar_fd.c ft_putstr_fd.c
+OBJDIR      = obj
+OBJS        = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
-OBJS = $(SRCS:.c=.o)
-CC = cc
-CFLAG = -Wall -Wextra -Werror 
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror
 
-LIBFT_PATH = ./libft
-LIBFT_NAME = libft.a
+all: $(NAME)
 
-$(NAME) : $(OBJS)
-	make -C	$(LIBFT_PATH)	all
-		cp	$(LIBFT_PATH)/$(LIBFT_NAME)	$(NAME)
-	ar rc	$(NAME)	$(OBJS)
-	@make -C $(LIBFT_PATH) clean
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
+# obj ディレクトリへ .o ファイルを出力するパターンルール
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
-
-all:$(NAME)
-
-.c.o:
-	$(CC) $(CFLAG) -I $(INCLUDE) -c $< -o $@
 clean:
-	rm -f $(OBJS)
-	@make -C $(LIBFT_PATH) clean
+	rm -rf $(OBJDIR)
+
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(LIBFT_PATH)/$(LIBFT_NAME)
-re:fclean all
 
-.PHONY:	all	clean	fclean	re
+re: fclean all
+
+.PHONY: all clean fclean re
+
+
