@@ -6,11 +6,43 @@
 /*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:40:49 by hiasano           #+#    #+#             */
-/*   Updated: 2025/04/13 22:09:10 by hiasano          ###   ########.fr       */
+/*   Updated: 2025/04/20 19:53:29 by hiasano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/push_swap.h"
+
+int add_to_stack_a(int count_int, char **strs, t_list **stack_a)
+{
+    int i;
+    t_list *new_node;
+    
+    i = 0;
+    while (i < count_int)
+    {
+        new_node = ft_lstnew(ft_atoi(strs[i]));
+        if (!new_node)
+            return (-1);
+        ft_lstadd_back(stack_a, new_node);
+        i++;
+    }
+    return (count_int);
+}
+
+void	free_strs(char **strs)
+{
+	int	i;
+
+	if (!strs)
+		return;
+	i = 0;
+	while (strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+}
 
 void	ft_initialize_node(t_list *node)
 {
@@ -24,28 +56,73 @@ void	ft_initialize_node(t_list *node)
 	node->bottom = NULL;
 }
 
+static int	check_args(int argc, char **argv)
+{
+	int	i;
 
-
-int main(int argc, char **argv) 
-{    
-    t_list *stack_a;
-
-    if(argc < 2)
-        return (0);
-    stack_a = NULL;
-    if(argc == 2)
-    {
-        // スプリット
-    }
-    // エラーチェック文字列に整数以外が入っているか⇢スタックaに入れる    
-
-    PRINT_ERROR();
-    return (0);
+	if (argc < 2)
+		return (0);
+	if (argc > 2)
+	{
+		i = 1;
+		while (i < argc)
+		{
+			if (ft_strchr(argv[i], ' '))
+			{
+				ft_putstr_fd("Error\n", 2);
+				return (0);
+			}
+			i++;
+		}
+	}
+	return (1);
 }
+
+static int	process_args(int argc, char **argv, t_list **stack_a)
+{
+	char	**strs;
+	int		count_str;
+	int		tmp_count;
+
+	strs = NULL;
+	count_str = 0;
+	if (argc == 2)
+	{
+		strs = ft_split(argv[1], ' ', &tmp_count);
+		count_str = tmp_count;
+		count_str = add_to_stack_a(count_str, strs, stack_a);
+	}
+	else
+	{
+		argv++;
+		count_str = add_to_stack_a(argc - 1, argv, stack_a);
+	}
+	if (strs)
+		free_strs(strs);
+	return (count_str);
+}
+
+int	main(int argc, char **argv)
+{
+	t_list	*stack_a;
+	int		count_str;
+
+	stack_a = NULL;
+	if (!check_args(argc, argv))
+		return (0);
+	count_str = process_args(argc, argv, &stack_a);
+	ft_printf("[DEBUG] str_count = %d\n", count_str);
+	ft_printf("[DEBUG] stack size after parse = %d\n", ft_lstsize(stack_a));
+	ft_lstclear(&stack_a);
+	ft_printf("[DEBUG] stack_a pointer after clear = %p (should be NULL)\n",
+			  (void *)stack_a);
+	return (0);
+}
+
+// PRINT_ERROR();
 
 /*
 int	ft_check_digit(char *str)の返り値
 1ならエラー
 0ならエラーなし　
 */
-

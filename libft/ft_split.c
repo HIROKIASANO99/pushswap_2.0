@@ -6,7 +6,7 @@
 /*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:37:52 by hiasano           #+#    #+#             */
-/*   Updated: 2024/05/17 16:16:37 by hiasano          ###   ########.fr       */
+/*   Updated: 2025/04/14 18:59:56 by hiasano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ char	**result_free(char const *s, char c, char **result, int count_str)
 	return (result);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c ,int *get_count_str)
 {
 	int		count_str;
 	char	**result;
@@ -126,6 +126,7 @@ char	**ft_split(char const *s, char c)
 		return (buf);
 	}
 	count_str = ft_count_str((char *)s, c);
+	*get_count_str = count_str;
 	return (result_free(s, c, result, count_str));
 }
 /*
