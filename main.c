@@ -6,7 +6,7 @@
 /*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:40:49 by hiasano           #+#    #+#             */
-/*   Updated: 2025/04/20 19:53:29 by hiasano          ###   ########.fr       */
+/*   Updated: 2025/04/21 22:45:48 by hiasano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,29 +78,31 @@ static int	check_args(int argc, char **argv)
 	return (1);
 }
 
-static int	process_args(int argc, char **argv, t_list **stack_a)
-{
-	char	**strs;
-	int		count_str;
-	int		tmp_count;
 
-	strs = NULL;
-	count_str = 0;
-	if (argc == 2)
-	{
-		strs = ft_split(argv[1], ' ', &tmp_count);
-		count_str = tmp_count;
-		count_str = add_to_stack_a(count_str, strs, stack_a);
-	}
-	else
-	{
-		argv++;
-		count_str = add_to_stack_a(argc - 1, argv, stack_a);
-	}
-	if (strs)
-		free_strs(strs);
-	return (count_str);
-}
+// int	process_args(int argc, char **argv, t_list **stack_a)
+// {
+	// char	**strs;
+	// int		count_str;
+	// int		tmp_count;
+// 
+	// strs = NULL;
+	// count_str = 0;
+	// if (argc == 2)
+	// {
+		// strs = ft_split(argv[1], ' ', &tmp_count);
+		// count_str = tmp_count;
+		// count_str = add_to_stack_a(count_str, strs, stack_a);
+	// }
+	// else
+	// {
+		// argv++;
+		// count_str = add_to_stack_a(argc - 1, argv, stack_a);
+	// }
+	// if (strs)
+		// free_strs(strs);
+	// return (count_str);
+// }
+
 
 int	main(int argc, char **argv)
 {
@@ -111,11 +113,10 @@ int	main(int argc, char **argv)
 	if (!check_args(argc, argv))
 		return (0);
 	count_str = process_args(argc, argv, &stack_a);
-	ft_printf("[DEBUG] str_count = %d\n", count_str);
-	ft_printf("[DEBUG] stack size after parse = %d\n", ft_lstsize(stack_a));
+printf("count_str = %d\n",count_str);
+print_stack(stack_a,'a');
 	ft_lstclear(&stack_a);
-	ft_printf("[DEBUG] stack_a pointer after clear = %p (should be NULL)\n",
-			  (void *)stack_a);
+print_stack(stack_a,'a');
 	return (0);
 }
 
