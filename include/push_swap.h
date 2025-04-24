@@ -14,7 +14,6 @@ void	print_stack(t_list *stack, char c);
 // main.c
 int     main(int argc, char **argv);
 void	free_strs(char **strs);
-void    ft_initialize_node(t_list *node);
 int add_to_stack_a(int count_int, char **strs, t_list **stack_a);
 
 // check.c
