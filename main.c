@@ -6,7 +6,7 @@
 /*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:40:49 by hiasano           #+#    #+#             */
-/*   Updated: 2025/04/24 21:00:17 by hiasano          ###   ########.fr       */
+/*   Updated: 2025/04/28 22:08:25 by hiasano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	add_to_stack_a(int count, char **strs, t_list **stack_a)
 	int	i;
 	int	val;
 	t_list *new_node;
+	int		ret;
 
 	i = 0;
 	while (i < count)
@@ -26,7 +27,12 @@ int	add_to_stack_a(int count, char **strs, t_list **stack_a)
 		new_node = ft_lstnew(val);
 		if (!new_node)
 			return (-1);
-		ft_lstadd_back(stack_a, new_node);
+		ret = ft_lstadd_back(stack_a, new_node);
+		if (ret < 0)
+		{
+			free(new_node);      /* ← ここで必ず解放 */
+			return (-1);
+		}
 		i++;
 	}
 	return (count);
