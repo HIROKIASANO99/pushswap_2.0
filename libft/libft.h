@@ -6,7 +6,7 @@
 /*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:41:34 by hiasano           #+#    #+#             */
-/*   Updated: 2025/04/28 21:26:08 by hiasano          ###   ########.fr       */
+/*   Updated: 2025/04/28 22:21:02 by hiasano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
-char	**ft_split(char const *s, char c, int *get_count_str); // 修正済みプロトタイプ
+char	**ft_split(char const *s, char c, int *get_count_str); 
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));

@@ -1,7 +1,9 @@
 INCLUDE	= ./include
 NAME	= push_swap
 SRCS	= \
-			main.c check.c debug.c process_args.c
+			main.c check.c debug.c process_args.c group_utils.c \
+			commands.c operations_swap_push.c operations_rotate.c operations_reverse_rotate.c \
+			sort.c
 
 
 OBJS	= $(SRCS:.c=.o)
