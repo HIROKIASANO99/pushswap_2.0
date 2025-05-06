@@ -33,8 +33,14 @@ void	ft_sortstack(t_list **stack_a, t_list **stack_b, int size)
 {
 	if (size == 0)
 		return ;
+    if (size == 3 || size == 5)
+    {
+	    ft_min_sort(stack_a, stack_b, size);
+        return;
+    }
 	ft_first_sort(stack_a, stack_b, 4, 3);
 	ft_first_sort(stack_a, stack_b, 5, 2);
 	ft_first_sort(stack_a, stack_b, 6, 1);
-    
-}
+    ft_second_sort(stack_a, stack_b, size);
+    return;
+} 

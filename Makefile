@@ -3,7 +3,7 @@ NAME	= push_swap
 SRCS	= \
 			main.c check.c debug.c process_args.c group_utils.c \
 			commands.c operations_swap_push.c operations_rotate.c operations_reverse_rotate.c \
-			sort.c
+			sort.c second_sort.c min_sort.c
 
 
 OBJS	= $(SRCS:.c=.o)

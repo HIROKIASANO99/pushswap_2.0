@@ -44,7 +44,6 @@ static void	assign_large_groups(t_list *stack, int count, int base)
 	}
 }
 
-/* 3) エントリーポイント */
 int	get_group(int count_str, t_list *stack_a)
 {
 	int	base;

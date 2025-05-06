@@ -6,7 +6,7 @@
 /*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:41:13 by hiasano           #+#    #+#             */
-/*   Updated: 2025/04/14 19:09:34 by hiasano          ###   ########.fr       */
+/*   Updated: 2025/05/06 17:01:46 by hiasano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_check_digit(char *str)
 {
 	int i;
-	// int err;
+
 	i = 0;
 	if (str[i] == '-')
 	{
@@ -32,4 +32,21 @@ int	ft_check_digit(char *str)
 		i++;
 	}
 	return(0);
+}
+
+int	ft_check_a(int count_str, t_list **stack_a)
+{
+	t_list	*cur;
+
+	if (!stack_a || !*stack_a || (count_str == -1))
+		return(-1);
+	cur = *stack_a;
+	while (cur->next)
+	{
+		if (cur->order + 1 != cur->next->order)
+			return (count_str);
+		cur = cur->next;
+	}
+	ft_lstclear(stack_a);
+	return(-1);
 }

@@ -18,6 +18,7 @@ int add_to_stack_a(int count_int, char **strs, t_list **stack_a);
 
 // check.c
 int	    ft_check_digit(char *str);
+int	ft_check_a(int count_str, t_list **stack_a);
 
 //process_args.c
 int	process_args(int argc, char **argv, t_list **stack_a);
@@ -51,5 +52,11 @@ void	command_rrr(t_list **a, t_list **b);
 // sort.c
 void	ft_first_sort(t_list **stack_a, t_list **stack_b, int top, int bottom);
 void	ft_sortstack(t_list **stack_a, t_list **stack_b, int size);
+
+//second_cort.c
+void	ft_second_sort(t_list **stack_a, t_list **stack_b, int size);
+
+//min_sort.c
+void	ft_min_sort(t_list **stack_a, t_list **stack_b, int count);
 
 #endif

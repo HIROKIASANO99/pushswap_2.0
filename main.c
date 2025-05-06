@@ -6,7 +6,7 @@
 /*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:40:49 by hiasano           #+#    #+#             */
-/*   Updated: 2025/05/03 13:10:11 by hiasano          ###   ########.fr       */
+/*   Updated: 2025/05/06 16:48:33 by hiasano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,23 +86,17 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (!check_args(argc, argv))
-		return (0);
+		return (1);
 	count_str = process_args(argc, argv, &stack_a);
 	count_str = get_group(count_str, stack_a);
 	if (count_str == -1)
 		PRINT_ERROR();
-	ft_sortstack(&stack_a, &stack_b, count_str);
-	print_stack(stack_a, 'a');
-	print_stack(stack_b, 'b');
+	count_str = ft_check_a(count_str, &stack_a);
+	if(count_str != -1)
+		ft_sortstack(&stack_a, &stack_b, count_str);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
-
+	if (count_str == -1)
+			return(1);
 	return (0);
 }
-
-// PRINT_ERROR();
-/*
-int	ft_check_digit(char *str)の返り値
-1ならエラー
-0ならエラーなし　
-*/
