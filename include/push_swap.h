@@ -6,7 +6,7 @@
 /*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:01:39 by hiasano           #+#    #+#             */
-/*   Updated: 2025/05/12 20:44:16 by hiasano          ###   ########.fr       */
+/*   Updated: 2025/05/12 21:48:38 by hiasano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(int argc, char **argv);
 void	free_strs(char **strs);
 int		add_to_stack_a(int count_int, char **strs, t_list **stack_a);
 
-// check.c
+// check.c 
 int		ft_check_digit(char *str);
 int		ft_check_a(int count_str, t_list **stack_a);
 
