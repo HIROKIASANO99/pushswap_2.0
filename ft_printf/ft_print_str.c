@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "./include/ft_printf.h"
 
 int	ft_print_str_count_len(char *str)

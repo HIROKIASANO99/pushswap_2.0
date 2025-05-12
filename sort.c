@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/08 20:23:49 by hiasano           #+#    #+#             */
+/*   Updated: 2025/05/12 20:54:07 by hiasano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "./include/push_swap.h"
 
@@ -33,14 +44,14 @@ void	ft_sortstack(t_list **stack_a, t_list **stack_b, int size)
 {
 	if (size == 0)
 		return ;
-    if (size == 3 || size == 5)
-    {
-	    ft_min_sort(stack_a, stack_b, size);
-        return;
-    }
+	if (size == 3 || size == 5)
+	{
+		ft_min_sort(stack_a, stack_b, size);
+		return ;
+	}
 	ft_first_sort(stack_a, stack_b, 4, 3);
 	ft_first_sort(stack_a, stack_b, 5, 2);
 	ft_first_sort(stack_a, stack_b, 6, 1);
-    ft_second_sort(stack_a, stack_b, size);
-    return;
-} 
+	ft_second_sort(stack_a, stack_b, size);
+	return ;
+}

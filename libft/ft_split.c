@@ -110,7 +110,7 @@ char	**result_free(char const *s, char c, char **result, int count_str)
 	return (result);
 }
 
-char	**ft_split(char const *s, char c ,int *get_count_str)
+char	**ft_split(char const *s, char c, int *get_count_str)
 {
 	int		count_str;
 	char	**result;

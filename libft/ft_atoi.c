@@ -37,4 +37,3 @@ int	ft_atoi_safe(const char *str, int *out)
 	*out = (int)(num * sign);
 	return (0);
 }
-

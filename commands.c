@@ -1,5 +1,13 @@
 /* ************************************************************************** */
-/*                          push_swap_commands.c                              */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   commands.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/08 20:27:57 by hiasano           #+#    #+#             */
+/*   Updated: 2025/05/08 20:27:59 by hiasano          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
@@ -11,11 +19,11 @@ void	ft_command_swap(t_list **stack)
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	first  = *stack;
+	first = *stack;
 	second = first->next;
-	first->next   = second->next;
-	second->next  = first;
-	*stack        = second;
+	first->next = second->next;
+	second->next = first;
+	*stack = second;
 }
 
 void	ft_command_push(t_list **dst, t_list **src)
@@ -24,8 +32,8 @@ void	ft_command_push(t_list **dst, t_list **src)
 
 	if (!src || !*src)
 		return ;
-	tmp    = *src;
-	*src   = tmp->next;
+	tmp = *src;
+	*src = tmp->next;
 	tmp->next = NULL;
 	ft_lstadd_front(dst, tmp);
 }

@@ -19,11 +19,11 @@ t_list	*ft_lstnew(int number)
 	node = malloc(sizeof(t_list));
 	if (!node)
 		return (NULL);
-	node->number  = number;
-	node->order   = 1;
-	node->group   = 0;
-	node->next    = NULL;
-	node->top     = NULL;
-	node->bottom  = NULL;
+	node->number = number;
+	node->order = 1;
+	node->group = 0;
+	node->next = NULL;
+	node->top = NULL;
+	node->bottom = NULL;
 	return (node);
 }

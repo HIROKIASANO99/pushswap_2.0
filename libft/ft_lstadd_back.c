@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-# include "libft.h"
+#include "libft.h"
 
 int	ft_lstadd_back(t_list **lst, t_list *new)
 {
@@ -34,7 +33,7 @@ int	ft_lstadd_back(t_list **lst, t_list *new)
 		else
 			new->order++;
 		if (cur->next == NULL)
-			break;
+			break ;
 		cur = cur->next;
 	}
 	cur->next = new;

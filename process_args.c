@@ -1,10 +1,17 @@
 /* ************************************************************************** */
-/*  parse_args.c                                                              */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_args.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/08 20:25:12 by hiasano           #+#    #+#             */
+/*   Updated: 2025/05/08 20:25:14 by hiasano          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* ── 1) 1 引数（空白区切り）を処理 ─────────────────────────── */
 static int	handle_single_arg(char *arg, t_list **stack_a)
 {
 	char	**strs;
@@ -29,7 +36,6 @@ static int	handle_single_arg(char *arg, t_list **stack_a)
 	return (ret);
 }
 
-/* ── 2) 複数引数 (argv[1..]) を処理 ──────────────────────── */
 static int	handle_multi_args(int argc, char **argv, t_list **stack_a)
 {
 	int	i;
@@ -44,7 +50,6 @@ static int	handle_multi_args(int argc, char **argv, t_list **stack_a)
 	return (add_to_stack_a(argc - 1, argv + 1, stack_a));
 }
 
-/* ── 3) ラッパー ───────────────────────────────────────────── */
 int	process_args(int argc, char **argv, t_list **stack_a)
 {
 	if (argc == 2)

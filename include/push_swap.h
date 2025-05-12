@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hiasano <hiasano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/08 21:01:39 by hiasano           #+#    #+#             */
+/*   Updated: 2025/05/12 20:44:16 by hiasano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -6,25 +18,19 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-//debug.c---------------------------------------------------
-#include <stdio.h>  /* 42 版 printf を使うなら不要 */
-void	print_stack(t_list *stack, char c);
-//----------------------------------------------------------
-
 // main.c
-int     main(int argc, char **argv);
+int		main(int argc, char **argv);
 void	free_strs(char **strs);
-int add_to_stack_a(int count_int, char **strs, t_list **stack_a);
+int		add_to_stack_a(int count_int, char **strs, t_list **stack_a);
 
 // check.c
-int	    ft_check_digit(char *str);
-int	ft_check_a(int count_str, t_list **stack_a);
+int		ft_check_digit(char *str);
+int		ft_check_a(int count_str, t_list **stack_a);
 
-//process_args.c
-int	process_args(int argc, char **argv, t_list **stack_a);
+// process_args.c
+int		process_args(int argc, char **argv, t_list **stack_a);
 
-
-int	get_group(int count_str, t_list *stack_a);
+int		get_group(int count_str, t_list *stack_a);
 
 /* commands.c */
 void	ft_command_swap(t_list **stack);
@@ -53,10 +59,10 @@ void	command_rrr(t_list **a, t_list **b);
 void	ft_first_sort(t_list **stack_a, t_list **stack_b, int top, int bottom);
 void	ft_sortstack(t_list **stack_a, t_list **stack_b, int size);
 
-//second_cort.c
+// second_cort.c
 void	ft_second_sort(t_list **stack_a, t_list **stack_b, int size);
 
-//min_sort.c
+// min_sort.c
 void	ft_min_sort(t_list **stack_a, t_list **stack_b, int count);
 
 #endif
