@@ -14,27 +14,22 @@ BONUSSRCS   = \
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 	ft_lstdelone.c ft_lstclear.c ft_lstiter.c #ft_lstmap.c
 
-# 出力先ディレクトリ
 OBJDIR      = obj
 
-# .oファイルをobjディレクトリに生成する
 OBJS        = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 BNSOBJS     = $(addprefix $(OBJDIR)/, $(BONUSSRCS:.c=.o))
 
 CC          = gcc
 CFLAGS      = -Wall -Wextra -Werror
 
-# ライブラリ作成
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-# ボーナスターゲット
 bonus: $(OBJS) $(BNSOBJS)
 	ar rcs $(NAME) $(OBJS) $(BNSOBJS)
 
 all: $(NAME)
 
-# obj ディレクトリに .o を出力するためのパターンルール
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
@@ -47,4 +42,4 @@ fclean: clean
 
 re: fclean bonus
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonusJJ

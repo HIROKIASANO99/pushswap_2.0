@@ -15,7 +15,6 @@ NAME        = libftprintf.a
 
 SRCS        = ft_printf.c ft_print_str.c ft_print_hex.c ft_print_pointer.c ft_putnbr_unsign_fd.c
 
-# オブジェクトファイル出力用ディレクトリ
 OBJDIR      = obj
 OBJS        = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
@@ -33,7 +32,6 @@ $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 	@make -C $(LIBFT_PATH) clean
 
-# obj/ 配下に .o を生成するためのパターンルール
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAG) -I $(INCLUDE) -c $< -o $@
